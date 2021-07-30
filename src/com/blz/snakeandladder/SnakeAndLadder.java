@@ -14,7 +14,6 @@ public class SnakeAndLadder {
 		do {
 			int randOption = (int) (Math.random() * 10) % 3 + 1;
 			int rollDice;
-			System.out.println(randOption);
 			switch (randOption) {
 			case 1:
 				System.out.println("No Play");
@@ -23,21 +22,25 @@ public class SnakeAndLadder {
 				System.out.println("In Ladder");
 				rollDice = ch.rollDice();
 				currentPosition += rollDice;
+				if (currentPosition>100) {
+					currentPosition-=rollDice;
+				}
 				break;
 			case 3:
 				System.out.println("In Snake");
 				rollDice = ch.rollDice();
 				currentPosition -= rollDice;
+				if(currentPosition<0) {
+					currentPosition=0;
+				}
 				break;
 			default:
 				System.out.println("Erro In randOption");
 			}
-			if(currentPosition<0) {
-				currentPosition=0;
-			}
+			
 			System.out.println("Current Position : " + currentPosition);
 
-		} while (currentPosition < WINNINGPOSITION);
+		} while (currentPosition < 100);
 
 	}
 }
