@@ -7,10 +7,11 @@ public class SnakeAndLadder {
 		int randValue = (int) (Math.random() * 10) % 6 + 1;
 		return randValue;
 	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		SnakeAndLadder ch = new SnakeAndLadder();
-		int currentPosition = 0;
+		int currentPosition = 0, countDice = 0;
 		do {
 			int randOption = (int) (Math.random() * 10) % 3 + 1;
 			int rollDice;
@@ -21,26 +22,28 @@ public class SnakeAndLadder {
 			case 2:
 				System.out.println("In Ladder");
 				rollDice = ch.rollDice();
+				countDice += 1;
 				currentPosition += rollDice;
-				if (currentPosition>100) {
-					currentPosition-=rollDice;
+				if (currentPosition > 100) {
+					currentPosition -= rollDice;
 				}
 				break;
 			case 3:
 				System.out.println("In Snake");
 				rollDice = ch.rollDice();
+				countDice += 1;
 				currentPosition -= rollDice;
-				if(currentPosition<0) {
-					currentPosition=0;
+				if (currentPosition < 0) {
+					currentPosition = 0;
 				}
 				break;
 			default:
 				System.out.println("Erro In randOption");
 			}
-			
+
 			System.out.println("Current Position : " + currentPosition);
 
 		} while (currentPosition < 100);
-
+		System.out.println("Total Number of time RollDice : " + countDice);
 	}
 }
