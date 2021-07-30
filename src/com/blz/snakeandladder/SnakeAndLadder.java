@@ -1,6 +1,8 @@
 package com.blz.snakeandladder;
 
 public class SnakeAndLadder {
+	static final int WINNINGPOSITION = 100;
+
 	public int rollDice() {
 		int randValue = (int) (Math.random() * 10) % 6 + 1;
 		return randValue;
@@ -30,9 +32,12 @@ public class SnakeAndLadder {
 			default:
 				System.out.println("Erro In randOption");
 			}
+			if(currentPosition<0) {
+				currentPosition=0;
+			}
 			System.out.println("Current Position : " + currentPosition);
 
-		} while (currentPosition <= 50);
+		} while (currentPosition < WINNINGPOSITION);
 
 	}
 }
